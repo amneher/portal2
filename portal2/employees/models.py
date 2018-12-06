@@ -12,6 +12,10 @@ class Employee(models.Model):
     birthday = models.DateField(auto_now=False, auto_now_add=False)
     hire_date = models.DateField(auto_now=False, auto_now_add=False)
     date_left = models.DateField(auto_now=False, auto_now_add=False)
+    SALARY = 'SA'
+    FULL_TIME = 'FT'
+    PART_TIME = 'PT'
+    TEMPORARY = 'TM'
     status_choices = (
         (SALARY, 'Salary'),
         (FULL_TIME, 'Full Time'),
@@ -35,4 +39,27 @@ class Employee(models.Model):
         (1000, '1000'),
     )
     swag_group = models.CharField(max_length=4, choices=swag_group_choices, default=0)
-    
+    position = models.ForeignKey('Position', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.first_name, self.last_name
+
+
+
+class Position(models.Model):
+    name = models.CharField('Position', max_length=255, blank=False, null=False, unique=True)
+    department = models.ForeignKey('Department', on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+class Department(models.Model):
+    name = models.CharField('Department', max_length=255, blank=False, null=False, unique=True)
+    supervisor = models.ForeignKey('Employee', on_delete=models.CASCADE)
+    admin = models.ForeignKey('Employee', on_delete=models.CASCADE, related_name='+', default=0)
+    purchase_threshold = models.CharField(max_length=10, default='$0')
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
