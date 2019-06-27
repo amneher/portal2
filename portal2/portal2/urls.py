@@ -16,11 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from . import views
 from employees import views
 from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+	url(r'^$', views.index),
     url(r'^api/employees/$', views.employee_list),
     url(r'^api/employees/(?P<pk>[0-9]+)$', views.employee_detail),
 ]
