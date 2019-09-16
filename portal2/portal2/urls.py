@@ -1,7 +1,7 @@
 """portal2 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.1/topics/http/urls/
+    https://docs.djangoproject.com/en/2.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -13,14 +13,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+from rest_framework import routers, serializers, viewsets
+from django.contrib.auth.models import Employee, Ticket, Position, Project
+from django.conf.urls import url, include
 
-from employees import views
-from django.conf.urls import url
 
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register(r'employees', EmployeeViewSet)
+router.register(r'tickets', TicketViewSet)
+router.register(r'projects', ProjectViewSet)
+router.register(r'positions', PositionViewSet)
+
+# Wire up our API using automatic URL routing.
+# Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    url(r'^api/employees/$', views.employee_list),
-    url(r'^api/employees/(?P<pk>[0-9]+)$', views.employee_detail),
+    url(r'^', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
