@@ -14,8 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from rest_framework import routers, serializers, viewsets
-from django.contrib.auth.models import Employee, Ticket, Position, Project
 from django.conf.urls import url, include
+from portal2.portal2.viewsets import EmployeeViewSet, TicketViewSet, ProjectViewSet, PositionViewSet
 
 
 # Routers provide an easy way of automatically determining the URL conf.
