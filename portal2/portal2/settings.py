@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'portal2',
     'support',
     'employees',
+    'customers',
+    'blog',
 ]
 
 MIDDLEWARE = [

@@ -15,7 +15,10 @@ Including another URLconf
 """
 from rest_framework import routers, serializers, viewsets
 from django.conf.urls import url, include
-from portal2.portal2.viewsets import EmployeeViewSet, TicketViewSet, ProjectViewSet, PositionViewSet
+from portal2.employees.views import EmployeeViewSet, PositionViewSet
+from portal2.customers.views import FileViewSet, CustomerViewSet
+from portal2.support.views import ProjectViewSet, TicketViewSet
+from portal2.blog.views import ArticleViewSet, CommentViewSet
 
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -24,6 +27,10 @@ router.register(r'employees', EmployeeViewSet)
 router.register(r'tickets', TicketViewSet)
 router.register(r'projects', ProjectViewSet)
 router.register(r'positions', PositionViewSet)
+router.register(r'files', FileViewSet)
+router.register(r'customers', CustomerViewSet)
+router.register(r'articles', ArticleViewSet)
+router.register(r'comments', CommentViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.

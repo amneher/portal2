@@ -3,11 +3,11 @@ from rest_framework import serializers
 
 
 # Serializers define the API representation.
-class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Employee
-        fields = ['first_name', 'last_name', 'email', 'phone', 'address', 'birthdate', 'hire_date',
-                  'left_date', 'status', 'rfid', 'hrid', 'is_employed', 'is_active', 'swag_group', 'positions', ]
+#class EmployeeSerializer(serializers.HyperlinkedModelSerializer):
+ #   class Meta:
+  #      model = Employee
+   #     fields = ['first_name', 'last_name', 'email', 'phone', 'address', 'birthdate', 'hire_date',
+    #              'left_date', 'status', 'rfid', 'hrid', 'is_employed', 'is_active', 'swag_group', 'positions', ]
         
         
 class ProjectSerializer(serializers.HyperlinkedModelSerializer):
@@ -22,7 +22,7 @@ class TicketSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['create_date', 'due_date', 'priority', 'title', 'description', 'assignees', 'location', 'status', 'repeat', 'repeat_interval', 'visibility', 'project', 'creator',]
         
 
-class PositionSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Position
-        fields = ['name', 'department', 'is_active']
+#class PositionSerializer(serializers.HyperlinkedModelSerializer):
+ #   class Meta:
+  #      model = Position
+   #     fields = ['name', 'department', 'is_active']
