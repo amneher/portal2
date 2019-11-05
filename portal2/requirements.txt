@@ -1,0 +1,5 @@
+Django 2.2
+Psycopg2
+Django-REST-Framework
+Django-Bootstrap
+Cookiecutter-Django
